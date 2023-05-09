@@ -1,18 +1,18 @@
 #ifndef UTIFAC_HPP
 #define UTIFAC_HPP
+#pragma once
 
 #include "BGVrns.hpp"
-#include <string>
-#include <vector>
+//#include <string>
+//#include <vector>
 #include <algorithm>
-#include <cctype>
-#include <sstream>
+//#include <cctype>
+//#include <sstream>
 #include <filesystem>
 #include <iostream>
-#include <vector>
 #include <openssl/evp.h>
 #include <fstream>
-#include <memory>
+//#include <memory>
 
 extern std::shared_ptr<BGVrns> bgvrns;
 
