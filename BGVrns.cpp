@@ -1,18 +1,6 @@
 #include "BGVrns.hpp"
-#include "openfhe.h"
-#include "ciphertext-ser.h"
-#include "cryptocontext-ser.h"
-#include "key/key-ser.h"
-#include "scheme/bfvrns/bfvrns-ser.h"
-#include "scheme/bgvrns/bgvrns-ser.h"
-#include <filesystem>
-#include <iostream>
-#include <vector>
-#include <openssl/evp.h>
 #include "Utifac.hpp"
-#include "ciphertext.h"
-#include <string>
-#include <fstream>
+
 
 BGVrns::BGVrns(const std::string &keyroot, const std::string &keyHash){
     parameters.SetMultiplicativeDepth(20);
@@ -35,9 +23,6 @@ BGVrns::BGVrns(const std::string &keyroot, const std::string &keyHash){
 
 BGVrns::~BGVrns(){}
 
-
-
-
 void BGVrns::key_gen(){
     std::cerr << "creating new key..." << std::endl;
     std::string filename = createFileName();
@@ -57,8 +42,6 @@ void BGVrns::key_gen(){
     }
     HASHsk = sha3file("./" + filename + "Skey");
 }
-
-
 
 std::string BGVrns::encrypt(std::string text){
     Pkey_path = findFilesWithHash(keyroot_, HASHpk);
@@ -90,7 +73,6 @@ std::string BGVrns::encrypt(std::string text){
     
     return s;
 }
-
 
 std::string BGVrns::decrypt(){
     std::pair<std::string, std::string> content_pair = solve_header("./data");
